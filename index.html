@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квиток</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Підключення шрифту Roboto -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Встановлення шрифту */
+            background-color: #f5f5f5; /* Світло-сірий фон */
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh; /* Забезпечує заповнення висоти вікна */
+            display: flex;
+            justify-content: center; /* Центрує по горизонталі */
+            align-items: center; /* Центрує по вертикалі */
+        }
+
+        .ticket-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            position: absolute;
+            top: -35px; /* Виводить логотип вище */
+            left: calc(50% - 35px); /* Центрує логотип */
+        }
+
+        .header {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .thin-line {
+            width: 100px;
+            height: 1px;
+            background-color: #ccc;
+            margin: 10px auto 20px auto; /* Відступи зверху та знизу */
+        }
+
+        .ticket-info {
+            font-size: 40px;
+            font-weight: bold;
+            color: #4c4c4c;
+            margin-bottom: 20px;
+        }
+
+        .purchase-info {
+            font-size: 16px; /* Розмір шрифта для дати */
+            color: #777; /* Колір тексту для дати */
+            margin-bottom: 20px; /* Відстань знизу */
+        }
+
+        .timer-container {
+            background: linear-gradient(135deg, #e1f2e7, #e0f0fc); /* Зелена градієнтна заливка */
+            border-radius: 10px; /* Закруглені кути */
+            padding: 5px 10px; /* Зменшене відступи */
+            margin-bottom: 15px; /* Зменшено відступ знизу */
+            display: inline-block; /* Щоб контейнер займав лише місце навколо вмісту */
+            position: relative;
+        }
+
+        .circle {
+            width: 10px; /* Розмір кружечка */
+            height: 10px; /* Розмір кружечка */
+            border: 2px solid green; /* Колір та товщина обводки кружечка */
+            border-radius: 50%; /* Закруглені кути для кружечка */
+            position: absolute; /* Абсолютне позиціонування */
+            left: 10px; /* Відступ зліва, щоб кружечок був всередині заливки */
+            top: 50%; /* Центрує по вертикалі */
+            transform: translateY(-50%); /* Центрує кружечок */
+            background-color: transparent; /* Порожній кружечок */
+        }
+
+        .timer {
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+            display: inline-block; /* Дозволяє кружечку знаходитись поруч з текстом */
+            margin-left: 20px; /* Відстань між кружечком та текстом */
+        }
+
+        .dotted-line {
+            border-top: 1px dashed #ccc; /* Пунктирна лінія */
+            width: 100%; /* Довжина пунктиру */
+            margin: 20px 0; /* Відстань зверху і знизу */
+            border-width: 1px; /* Товщина пунктиру */
+            border-style: dashed; /* Стиль пунктиру */
+            border-image: repeating-linear-gradient(to right, #ccc 0, #ccc 10px, transparent 10px, transparent 20px) 1; 
+            /* Налаштування довжини кожної риски і відстані між ними */
+        }
+
+        .qr-code {
+            width: 170px;
+            height: 170px;
+            margin-bottom: 20px;
+            border: 0px solid #ddd;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+
+        .footer {
+            color: #999;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .hidden-btn {
+            font-size: 0; /* Прихований текст кнопки */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Адаптивність для мобільних пристроїв */
+        @media (max-width: 400px) {
+            .ticket-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .qr-code {
+                width: 130px;
+                height: 130px;
+            }
+
+            .header, .ticket-info, .timer, .footer, .purchase-info {
+                font-size: 16px; /* Розмір шрифта для всіх текстів */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket-container">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <div class="header">Миколаївелектротранс Тролейбус</div>
+        <div class="thin-line"></div> <!-- Тонка лінія під заголовком -->
+        <div class="purchase-info" id="purchase-info"></div> <!-- Додано для дати та часу -->
+        <div class="ticket-info">
+            <span id="ticket-count">1</span> квиток
+        </div>
+        <div class="timer-container">
+            <div class="circle"></div> <!-- Додано порожній кружечок -->
+            <div class="timer">Квиток дійсний — <span id="timer">1:00:00</span></div>
+        </div>
+        <div class="dotted-line"></div> <!-- Пунктирна лінія -->
+        <img src="images/qr-code.jpg" alt="QR Code" class="qr-code">
+        <div class="footer">Номер: 316 311</div>
+        <button class="hidden-btn" id="hidden-btn">Змінити кількість квитків</button>
+    </div>
+
+    <script>
+        // Відображення дати та часу
+        function displayPurchaseInfo() {
+            const now = new Date();
+            const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+            const formattedDate = now.toLocaleString('uk-UA', options); // Формат дати без року
+            document.getElementById('purchase-info').textContent = `Придбано ${formattedDate}`;
+        }
+
+        // Таймер
+        function startTimer(duration, display) {
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = Math.floor(timer / 3600);
+                minutes = Math.floor((timer % 3600) / 60);
+                seconds = timer % 60;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration; // Сброс таймера
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            displayPurchaseInfo(); // Відображення дати та часу
+            const oneHour = 60 * 60; // 1 год в секундах
+            const display = document.querySelector('#timer');
+            startTimer(oneHour, display);
+        };
+
+        // Скрыта кнопка для изменения количества квитков
+        document.getElementById('hidden-btn').addEventListener('click', function() {
+            const ticketCountElement = document.getElementById('ticket-count');
+            let ticketCount = parseInt(ticketCountElement.textContent);
+            ticketCount++;
+            ticketCountElement.textContent = ticketCount;
+        });
+    </script>
+</body>
+</html>
+.
