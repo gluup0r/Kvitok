@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Квиток</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -10,35 +10,41 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             text-align: center;
-            padding: 20px;
             margin: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .ticket-container {
             background-color: white;
             border-radius: 15px;
             padding: 30px;
-            width: 350px;
+            width: 80%;
+            max-width: 350px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 15%;
+            max-width: 70px;
+            height: auto;
             border-radius: 50%;
             margin-bottom: 10px;
             position: absolute;
             top: -35px;
-            left: calc(50% - 35px);
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .header {
-            font-size: 22px;
+            font-size: calc(1.5em + 1vw);
             font-weight: bold;
             color: #333;
             margin-bottom: 5px;
@@ -52,14 +58,14 @@
         }
 
         .ticket-info {
-            font-size: 40px;
+            font-size: calc(2em + 1vw);
             font-weight: bold;
             color: #4c4c4c;
             margin-bottom: 20px;
         }
 
         .purchase-info {
-            font-size: 16px;
+            font-size: 1em;
             color: #777;
             margin-bottom: 20px;
         }
@@ -69,8 +75,9 @@
             border-radius: 10px;
             padding: 5px 10px;
             margin-bottom: 15px;
-            display: inline-block;
-            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .circle {
@@ -78,18 +85,13 @@
             height: 10px;
             border: 2px solid green;
             border-radius: 50%;
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
             background-color: transparent;
+            margin-right: 10px;
         }
 
         .timer {
-            font-size: 18px;
-            color: rgb(0, 0, 0);
-            display: inline-block;
-            margin-left: 20px;
+            font-size: 1em;
+            color: #000;
         }
 
         .dotted-line {
@@ -102,17 +104,17 @@
         }
 
         .qr-code {
-            width: 170px;
-            height: 170px;
+            width: 50%;
+            max-width: 170px;
+            height: auto;
             margin-bottom: 20px;
-            border: 0px solid #ddd;
             padding: 10px;
             background-color: #fafafa;
         }
 
         .footer {
             color: #999;
-            font-size: 14px;
+            font-size: 0.9em;
             margin-top: 10px;
         }
 
@@ -131,27 +133,25 @@
             }
 
             .logo {
-                width: 60px;
-                height: 60px;
-                top: -30px;
-                left: calc(50% - 30px);
+                width: 12%;
+                max-width: 60px;
             }
 
             .header {
-                font-size: 20px;
+                font-size: 1.2em;
             }
 
             .ticket-info {
-                font-size: 30px;
+                font-size: 1.5em;
             }
 
             .purchase-info, .timer, .footer {
-                font-size: 14px;
+                font-size: 0.9em;
             }
 
             .qr-code {
-                width: 150px;
-                height: 150px;
+                width: 70%;
+                max-width: 150px;
             }
         }
 
@@ -161,19 +161,19 @@
             }
 
             .header, .ticket-info, .timer, .footer, .purchase-info {
-                font-size: 14px;
+                font-size: 0.8em;
             }
 
             .qr-code {
-                width: 120px;
-                height: 120px;
+                width: 60%;
+                max-width: 120px;
             }
         }
     </style>
 </head>
 <body>
     <div class="ticket-container">
-        <img src="images/logo.png" alt="Logo" class="logo">
+        <img src="images/logo.png" srcset="images/logo@2x.png 2x" alt="Logo" class="logo">
         <div class="header">Миколаївелектротранс Тролейбус</div>
         <div class="thin-line"></div>
         <div class="purchase-info" id="purchase-info"></div>
