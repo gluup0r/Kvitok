@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Квиток</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -10,90 +10,78 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             text-align: center;
+            padding: 20px;
             margin: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
         }
-
         .ticket-container {
             background-color: white;
             border-radius: 15px;
             padding: 30px;
-            width: 80%;
-            max-width: 350px;
+            width: 350px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-
         .logo {
-            width: 15%;
-            max-width: 70px;
-            height: auto;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin-bottom: 10px;
             position: absolute;
             top: -35px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: calc(50% - 35px);
         }
-
         .header {
-            font-size: calc(1.5em + 1vw);
+            font-size: 22px;
             font-weight: bold;
             color: #333;
             margin-bottom: 5px;
         }
-
         .thin-line {
             width: 100px;
             height: 1px;
             background-color: #ccc;
             margin: 10px auto 20px auto;
         }
-
         .ticket-info {
-            font-size: calc(2em + 1vw);
+            font-size: 40px;
             font-weight: bold;
             color: #4c4c4c;
             margin-bottom: 20px;
         }
-
         .purchase-info {
-            font-size: 1em;
+            font-size: 16px;
             color: #777;
             margin-bottom: 20px;
         }
-
         .timer-container {
             background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
             border-radius: 10px;
             padding: 5px 10px;
             margin-bottom: 15px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
+            position: relative;
         }
-
         .circle {
             width: 10px;
             height: 10px;
             border: 2px solid green;
             border-radius: 50%;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
             background-color: transparent;
-            margin-right: 10px;
         }
-
         .timer {
-            font-size: 1em;
-            color: #000;
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+            display: inline-block;
+            margin-left: 20px;
         }
-
         .dotted-line {
             border-top: 1px dashed #ccc;
             width: 100%;
@@ -102,78 +90,68 @@
             border-style: dashed;
             border-image: repeating-linear-gradient(to right, #ccc 0, #ccc 10px, transparent 10px, transparent 20px) 1;
         }
-
         .qr-code {
-            width: 50%;
-            max-width: 170px;
-            height: auto;
+            width: 170px;
+            height: 170px;
             margin-bottom: 20px;
+            border: 0px solid #ddd;
             padding: 10px;
             background-color: #fafafa;
         }
-
         .footer {
             color: #999;
-            font-size: 0.9em;
+            font-size: 14px;
             margin-top: 10px;
         }
-
         .hidden-btn {
             font-size: 0;
             background-color: transparent;
             border: none;
             cursor: pointer;
         }
-
         /* Адаптивність для мобільних пристроїв */
         @media (max-width: 600px) {
             .ticket-container {
                 width: 90%;
                 padding: 20px;
             }
-
             .logo {
-                width: 12%;
-                max-width: 60px;
+                width: 60px;
+                height: 60px;
+                top: -30px;
+                left: calc(50% - 30px);
             }
-
             .header {
-                font-size: 1.2em;
+                font-size: 20px;
             }
-
             .ticket-info {
-                font-size: 1.5em;
+                font-size: 30px;
             }
-
             .purchase-info, .timer, .footer {
-                font-size: 0.9em;
+                font-size: 14px;
             }
-
             .qr-code {
-                width: 70%;
-                max-width: 150px;
+                width: 150px;
+                height: 150px;
             }
         }
-
         @media (max-width: 400px) {
             .ticket-container {
                 padding: 15px;
             }
-
             .header, .ticket-info, .timer, .footer, .purchase-info {
-                font-size: 0.8em;
+                font-size: 14px;
             }
-
             .qr-code {
-                width: 60%;
-                max-width: 120px;
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
 </head>
 <body>
     <div class="ticket-container">
-        <img src="images/logo.png" srcset="images/logo@2x.png 2x" alt="Logo" class="logo">
+        <img src="images/logo.png" alt="Logo" class="logo">
         <div class="header">Миколаївелектротранс Тролейбус</div>
         <div class="thin-line"></div>
         <div class="purchase-info" id="purchase-info"></div>
@@ -189,7 +167,6 @@
         <div class="footer">Номер: 316 311</div>
         <button class="hidden-btn" id="hidden-btn">Змінити кількість квитків</button>
     </div>
-
     <script>
         function displayPurchaseInfo() {
             const now = new Date();
@@ -197,32 +174,26 @@
             const formattedDate = now.toLocaleString('uk-UA', options);
             document.getElementById('purchase-info').textContent = `Придбано ${formattedDate}`;
         }
-
         function startTimer(duration, display) {
             let timer = duration, hours, minutes, seconds;
             setInterval(function () {
                 hours = Math.floor(timer / 3600);
                 minutes = Math.floor((timer % 3600) / 60);
                 seconds = timer % 60;
-
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
-
                 display.textContent = hours + ":" + minutes + ":" + seconds;
-
                 if (--timer < 0) {
                     timer = duration;
                 }
             }, 1000);
         }
-
         window.onload = function () {
             displayPurchaseInfo();
             const oneHour = 60 * 60;
             const display = document.querySelector('#timer');
             startTimer(oneHour, display);
         };
-
         document.getElementById('hidden-btn').addEventListener('click', function() {
             const ticketCountElement = document.getElementById('ticket-count');
             let ticketCount = parseInt(ticketCountElement.textContent);
