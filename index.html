@@ -20,27 +20,27 @@
         .ticket-container {
             background-color: white;
             border-radius: 15px;
-            padding: 40px 30px;
+            padding: 30px;
             width: 100%;
-            max-width: 400px;
-            min-height: 650px; /* Зменшена висота для більш компактного вигляду */
+            max-width: 380px; 
+            min-height: 600px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
         }
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             margin-bottom: 10px;
             position: absolute;
-            top: -35px;
-            left: calc(50% - 35px);
+            top: -30px;
+            left: calc(50% - 30px);
         }
         .header {
             font-size: 20px;
             font-weight: bold;
             color: #333;
-            margin-top: 40px;
+            margin-top: 50px; 
             margin-bottom: 10px;
         }
         .thin-line {
@@ -87,13 +87,11 @@
             margin-left: 30px;
         }
         .dotted-line {
-            border-top: 1px dashed #ccc;
-            width: 100%;
-            margin: 25px 0;
+            margin: 10px 0; /* Менший відступ */
         }
         .qr-code {
-            width: 300px; /* Збільшено розмір QR-коду */
-            height: 300px;
+            width: 250px;
+            height: 250px;
             margin: 0 auto 20px auto;
             display: block;
             background-color: #fafafa;
@@ -111,16 +109,17 @@
         .hidden-btn {
             display: none;
         }
-        /* Адаптивність для смартфонів */
+       
         @media (max-width: 600px) {
             .ticket-container {
                 padding: 15px;
+                max-width: 350px; 
             }
             .logo {
-                width: 60px;
-                height: 60px;
-                top: -30px;
-                left: calc(50% - 30px);
+                width: 50px;
+                height: 50px;
+                top: -25px;
+                left: calc(50% - 25px);
             }
             .header {
                 font-size: 18px;
@@ -132,7 +131,7 @@
                 font-size: 14px;
             }
             .qr-code {
-                width: 150px;
+                width: 150px; /* Менший QR-код для маленьких екранів */
                 height: 150px;
             }
         }
@@ -151,7 +150,12 @@
             <div class="circle"></div>
             <div class="timer">Квиток дійсний — <span id="timer">1:00:00</span></div>
         </div>
-        <div class="dotted-line"></div>
+        <!-- Використовуємо SVG для пунктирної лінії з тоншими рисками і меншим відступом -->
+        <div class="dotted-line">
+            <svg width="100%" height="5" viewBox="0 0 100 1">
+                <line x1="0" y1="0" x2="100" y2="0" stroke="#ccc" stroke-width="1" stroke-dasharray="3, 6"/>
+            </svg>
+        </div>
         <img src="images/qr-code.jpg" alt="QR Code" class="qr-code">
         <div class="footer">Номер: <span id="ticket-number">170000</span></div>
     </div>
