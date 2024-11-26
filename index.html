@@ -20,10 +20,11 @@
         .ticket-container {
             background-color: white;
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px 30px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-height: 650px; /* Зменшена висота для більш компактного вигляду */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
         }
         .logo {
@@ -36,26 +37,26 @@
             left: calc(50% - 35px);
         }
         .header {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
             margin-top: 40px;
             margin-bottom: 10px;
         }
         .thin-line {
-            width: 100px;
+            width: 80px;
             height: 1px;
             background-color: #ccc;
-            margin: 10px auto 20px auto;
+            margin: 10px auto 15px auto;
         }
         .ticket-info {
-            font-size: 30px;
+            font-size: 26px;
             font-weight: bold;
             color: #4c4c4c;
             margin-bottom: 20px;
         }
         .purchase-info {
-            font-size: 16px;
+            font-size: 14px;
             color: #777;
             margin-bottom: 20px;
         }
@@ -63,7 +64,7 @@
             background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
             border-radius: 10px;
             padding: 5px 10px;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
             display: inline-block;
             position: relative;
             text-align: left;
@@ -80,7 +81,7 @@
             background-color: transparent;
         }
         .timer {
-            font-size: 18px;
+            font-size: 16px;
             color: rgb(0, 0, 0);
             display: inline-block;
             margin-left: 30px;
@@ -88,11 +89,11 @@
         .dotted-line {
             border-top: 1px dashed #ccc;
             width: 100%;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         .qr-code {
-            width: 170px;
-            height: 170px;
+            width: 300px; /* Збільшено розмір QR-коду */
+            height: 300px;
             margin: 0 auto 20px auto;
             display: block;
             background-color: #fafafa;
@@ -100,7 +101,12 @@
         .footer {
             color: #999;
             font-size: 14px;
-            margin-top: 10px;
+            margin-top: auto;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
         }
         .hidden-btn {
             display: none;
@@ -117,10 +123,10 @@
                 left: calc(50% - 30px);
             }
             .header {
-                font-size: 20px;
+                font-size: 18px;
             }
             .ticket-info {
-                font-size: 24px;
+                font-size: 22px;
             }
             .purchase-info, .timer, .footer {
                 font-size: 14px;
