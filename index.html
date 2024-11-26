@@ -21,7 +21,8 @@
             background-color: white;
             border-radius: 15px;
             padding: 30px;
-            width: 350px;
+            width: 100%;
+            max-width: 400px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
         }
@@ -38,7 +39,8 @@
             font-size: 22px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 5px;
+            margin-top: 40px;
+            margin-bottom: 10px;
         }
         .thin-line {
             width: 100px;
@@ -47,7 +49,7 @@
             margin: 10px auto 20px auto;
         }
         .ticket-info {
-            font-size: 40px;
+            font-size: 30px;
             font-weight: bold;
             color: #4c4c4c;
             margin-bottom: 20px;
@@ -64,6 +66,7 @@
             margin-bottom: 15px;
             display: inline-block;
             position: relative;
+            text-align: left;
         }
         .circle {
             width: 10px;
@@ -80,22 +83,18 @@
             font-size: 18px;
             color: rgb(0, 0, 0);
             display: inline-block;
-            margin-left: 20px;
+            margin-left: 30px;
         }
         .dotted-line {
             border-top: 1px dashed #ccc;
             width: 100%;
             margin: 20px 0;
-            border-width: 1px;
-            border-style: dashed;
-            border-image: repeating-linear-gradient(to right, #ccc 0, #ccc 10px, transparent 10px, transparent 20px) 1;
         }
         .qr-code {
             width: 170px;
             height: 170px;
-            margin-bottom: 20px;
-            border: 0px solid #ddd;
-            padding: 10px;
+            margin: 0 auto 20px auto;
+            display: block;
             background-color: #fafafa;
         }
         .footer {
@@ -104,16 +103,12 @@
             margin-top: 10px;
         }
         .hidden-btn {
-            font-size: 0;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
+            display: none;
         }
-        /* Адаптивність для мобільних пристроїв */
+        /* Адаптивність для смартфонів */
         @media (max-width: 600px) {
             .ticket-container {
-                width: 90%;
-                padding: 20px;
+                padding: 15px;
             }
             .logo {
                 width: 60px;
@@ -125,7 +120,7 @@
                 font-size: 20px;
             }
             .ticket-info {
-                font-size: 30px;
+                font-size: 24px;
             }
             .purchase-info, .timer, .footer {
                 font-size: 14px;
@@ -133,18 +128,6 @@
             .qr-code {
                 width: 150px;
                 height: 150px;
-            }
-        }
-        @media (max-width: 400px) {
-            .ticket-container {
-                padding: 15px;
-            }
-            .header, .ticket-info, .timer, .footer, .purchase-info {
-                font-size: 14px;
-            }
-            .qr-code {
-                width: 120px;
-                height: 120px;
             }
         }
     </style>
@@ -164,16 +147,30 @@
         </div>
         <div class="dotted-line"></div>
         <img src="images/qr-code.jpg" alt="QR Code" class="qr-code">
-        <div class="footer">Номер: 316 311</div>
-        <button class="hidden-btn" id="hidden-btn">Змінити кількість квитків</button>
+        <div class="footer">Номер: <span id="ticket-number">170000</span></div>
     </div>
     <script>
+        // Оновлення дати придбання
         function displayPurchaseInfo() {
             const now = new Date();
             const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
             const formattedDate = now.toLocaleString('uk-UA', options);
             document.getElementById('purchase-info').textContent = `Придбано ${formattedDate}`;
         }
+
+        // Збільшення номера квитка
+        function incrementTicketNumber() {
+            let ticketNumber = localStorage.getItem('ticketNumber');
+            if (!ticketNumber) {
+                ticketNumber = 170000; // Початкове значення
+            } else {
+                ticketNumber = parseInt(ticketNumber) + 1;
+            }
+            localStorage.setItem('ticketNumber', ticketNumber);
+            document.getElementById('ticket-number').textContent = ticketNumber;
+        }
+
+        // Таймер дії квитка
         function startTimer(duration, display) {
             let timer = duration, hours, minutes, seconds;
             setInterval(function () {
@@ -184,22 +181,18 @@
                 seconds = seconds < 10 ? "0" + seconds : seconds;
                 display.textContent = hours + ":" + minutes + ":" + seconds;
                 if (--timer < 0) {
-                    timer = duration;
+                    timer = 0;
                 }
             }, 1000);
         }
+
         window.onload = function () {
             displayPurchaseInfo();
-            const oneHour = 60 * 60;
+            incrementTicketNumber();
+            const oneHour = 60 * 60; // 1 година
             const display = document.querySelector('#timer');
             startTimer(oneHour, display);
         };
-        document.getElementById('hidden-btn').addEventListener('click', function() {
-            const ticketCountElement = document.getElementById('ticket-count');
-            let ticketCount = parseInt(ticketCountElement.textContent);
-            ticketCount++;
-            ticketCountElement.textContent = ticketCount;
-        });
     </script>
 </body>
 </html>
