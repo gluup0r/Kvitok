@@ -115,12 +115,14 @@ body {
 }
 .timer-container {
     background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
-    border-radius: 10px;
-    padding: 5px 10px;
-    margin-bottom: 30px;
-    display: inline-block;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 40px;
+    display: inline-flex;
+    align-items: center;
     position: relative;
     text-align: left;
+    transform: scale(1); /* Масштабування */
 }
 .circle {
     width: 10px;
