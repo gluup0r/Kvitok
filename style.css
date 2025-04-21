@@ -189,4 +189,21 @@ body {
         width: 230px;
         height: 230px;
     }
+
+    .timer-container {
+        transform: scale(1); /* трохи менше, ніж на десктопі */
+        padding: 10px 15px;
+    }
+
+    .timer {
+        font-size: 16px;
+        margin-left: 30px;
+    }
+
+    .circle {
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid green;
+        left: 10px;
+    }
 }
