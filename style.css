@@ -113,6 +113,10 @@ body {
     color: #000000;
     margin-bottom: 20px;
 }
+#ticket-number {
+    color: #000;
+    font-weight: bold;
+}
 .timer-container {
     background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
     border-radius: 15px;
