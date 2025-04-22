@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .ticket-container {
     position: relative;
     background-color: white;
@@ -17,23 +18,12 @@ body {
     width: 100%;
     max-width: 400px;
     min-height: 620px;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.ticket-container {
-    position: relative;
-    background-color: white;
-    padding: 30px 20px;
-    width: 100%;
-    max-width: 400px;
-    min-height: 620px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .ticket-container::before,
 .ticket-container::after {
     content: '';
@@ -46,49 +36,42 @@ body {
     transform: translateY(-50%);
     z-index: 2;
 }
+
 .ticket-container::before {
     left: -15px;
 }
+
 .ticket-container::after {
     right: -15px;
 }
+
+.top-cutout {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    z-index: 1;
+}
+
 .logo {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     position: absolute;
-    top: 0px; /* Вирівнювання логотипа */
+    top: -30px;
     left: calc(50% - 30px);
     background-color: white;
-    z-index: 3;
+    z-index: 999999;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Для вирізу */
+    overflow: hidden;
 }
 
-.logo::before,
-.logo::after {
-    content: '';
-    position: absolute;
-    width: 30px; /* Розмір вирізу */
-    height: 30px;
-    background-color: #f5f5f5; /* Колір фону сторінки */
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.logo::before {
-    top: 50%; /* Виріз зверху */
-    left: -15px;
-    transform: translateY(-50%);
-}
-
-.logo::after {
-    top: 50%; /* Виріз знизу */
-    right: -15px;
-    transform: translateY(-50%);
-}
 .header {
     font-size: 20px;
     font-weight: bold;
@@ -96,27 +79,32 @@ body {
     margin-top: 50px;
     margin-bottom: 10px;
 }
+
 .thin-line {
     width: 80px;
     height: 0.5px;
     background-color: #ccc;
     margin: 10px auto 15px auto;
 }
+
 .purchase-info {
     font-size: 14px;
     color: #777;
     margin-bottom: 20px;
 }
+
 .ticket-info {
     font-size: 30px;
     font-weight: bold;
     color: #000000;
     margin-bottom: 20px;
 }
+
 #ticket-number {
     color: #000;
     font-weight: bold;
 }
+
 .timer-container {
     background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
     border-radius: 15px;
@@ -126,8 +114,8 @@ body {
     align-items: center;
     position: relative;
     text-align: left;
-    transform: scale(1); /* Масштабування */
 }
+
 .circle {
     width: 10px;
     height: 10px;
@@ -139,26 +127,30 @@ body {
     transform: translateY(-50%);
     background-color: transparent;
 }
+
 .timer {
     font-size: 16px;
     color: rgb(0, 0, 0);
     display: inline-block;
     margin-left: 30px;
 }
+
 .dotted-line {
     margin-top: auto;
     margin-bottom: 15px;
-    display:flex;
+    display: flex;
 }
+
 .qr-code {
     width: 280px;
     height: 250px;
     margin-top: auto;
-    margin-bottom: -30px;
+    margin-bottom: 0px;
     display: flex;
     background-color: #fafafa;
     z-index: 2;
 }
+
 .footer {
     color: #999;
     font-size: 14px;
@@ -166,36 +158,42 @@ body {
     position: relative;
     z-index: 2;
 }
+
 .hidden-btn {
     display: none;
 }
+
 @media (max-width: 600px) {
     .ticket-container {
         padding: 15px;
         max-width: 350px;
     }
+
     .logo {
         width: 50px;
         height: 50px;
         top: 0px;
         left: calc(50% - 25px);
     }
+
     .header {
         font-size: 18px;
     }
+
     .ticket-info {
         font-size: 22px;
     }
+
     .purchase-info, .timer, .footer {
         font-size: 14px;
     }
+
     .qr-code {
         width: 230px;
         height: 230px;
     }
 
     .timer-container {
-        transform: scale(1); /* трохи менше, ніж на десктопі */
         padding: 10px 15px;
     }
 
