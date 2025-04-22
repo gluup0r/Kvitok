@@ -15,7 +15,10 @@ function incrementTicketNumber() {
         ticketNumber = parseInt(ticketNumber) + 1;
     }
     localStorage.setItem('ticketNumber', ticketNumber);
-    document.getElementById('ticket-number').textContent = ticketNumber;
+
+    // Форматуємо число з пробілом (наприклад: 186 542)
+    const formattedNumber = Number(ticketNumber).toLocaleString('uk-UA');
+    document.getElementById('ticket-number').textContent = formattedNumber;
 }
 
 // Таймер дії квитка
