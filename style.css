@@ -147,7 +147,7 @@ body {
 }
 .dotted-line {
     margin-top: auto;
-    margin-bottom: -30px;
+    margin-bottom: 15px;
     display:flex;
 }
 .qr-code {
