@@ -158,11 +158,12 @@ body {
     position: relative;
     z-index: 2;
 }
+
 .wave-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;        /* розтягується по ширині контейнера */
+    width: 100%;
     line-height: 0;
     z-index: 1;
     transform: translateY(3px);
@@ -172,25 +173,22 @@ body {
 .wave-bottom svg {
     display: block;
     width: 100%;
-    height: 24px;       /* фіксована висота хвилі */
+    height: 24px;
 }
 
-
-
+/* Адаптація для екранів ≤ 600px */
 @media (max-width: 600px) {
     .ticket-container {
-        padding: 15px;
+        padding: 20px 10px;
         max-width: 350px;
     }
 
-    @media (max-width: 600px) {
-        .logo {
-            width: 60px;
-            height: 60px;
-            top: -25px;
-            transform: translateX(-50%);
-            left: 50%;
-        }
+    .logo {
+        width: 60px;
+        height: 60px;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .header {
@@ -212,11 +210,6 @@ body {
 
     .timer-container {
         padding: 10px 15px;
-    }
-
-    .timer {
-        font-size: 16px;
-        margin-left: 30px;
     }
 
     .circle {
