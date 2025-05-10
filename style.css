@@ -1,40 +1,227 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Квиток</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="ticket-container">
-        <div class="top-cutout"></div>
-        <img src="images/logo.png" alt="Logo" class="logo">
-        <div class="header">Миколаївелектротранс Тролейбус</div>
-        <div class="thin-line"></div>
-        <div class="purchase-info" id="purchase-info"></div>
-        <div class="ticket-info">
-            <span id="ticket-count">1</span> квиток
-        </div>
-        <div class="timer-container">
-            <div class="circle"></div>
-            <div class="timer">Квиток дійсний — <span id="timer">1:30:00</span></div>
-        </div>
-        <div class="dotted-line">
-            <svg width="100%" height="4" viewBox="0 0 100 1">
-                <line x1="0" y1="0" x2="100" y2="0" stroke="#ccc" stroke-width="1" stroke-dasharray="3, 6"/>
-            </svg>
-        </div>
-        <img src="images/qr-code.jpg" alt="QR Code" class="qr-code">
-        <div class="footer">Номер: <span id="ticket-number">174&nbsp;525</span></div>
-    </div>
-    <div class="wave-bottom">
-        <svg viewBox="0 0 120 10" preserveAspectRatio="none">
-          <path d="M0,10 Q3,0 6,10 T12,10 T18,10 T24,10 T30,10 T36,10 T42,10 T48,10 T54,10 T60,10 T66,10 T72,10 T78,10 T84,10 T90,10 T96,10 T102,10 T108,10 T114,10 T120,10" fill="#f5f5f5"/>
-        </svg>
-      </div>
-        
-    <script src="script.js"></script>
-</body>
-</html>
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-container {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 400px;
+    min-height: 620px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ticket-container::before,
+.ticket-container::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.ticket-container::before {
+    left: -15px;
+}
+
+.ticket-container::after {
+    right: -15px;
+}
+
+.top-cutout {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    left: calc(50% - 30px);
+    background-color: white;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.thin-line {
+    width: 80px;
+    height: 0.5px;
+    background-color: #ccc;
+    margin: 10px auto 15px auto;
+}
+
+.purchase-info {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.ticket-info {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+#ticket-number {
+    color: #000;
+    font-weight: bold;
+}
+
+.timer-container {
+    background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 40px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    text-align: left;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border: 1px solid green;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+}
+
+.timer {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.dotted-line {
+    margin-top: auto;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.qr-code {
+    width: 280px;
+    height: 250px;
+    margin-top: auto;
+    margin-bottom: 0px;
+    display: flex;
+    background-color: #fafafa;
+    z-index: 2;
+}
+
+.footer {
+    color: #999;
+    font-size: 14px;
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+}
+.wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 1;
+    transform: translateY(5px); /* трохи нижче */
+}
+
+.wave-bottom svg {
+    display: block;
+    width: 100%;
+    height: 20px;
+}
+
+
+
+@media (max-width: 600px) {
+    .ticket-container {
+        padding: 15px;
+        max-width: 350px;
+    }
+
+    @media (max-width: 600px) {
+        .logo {
+            width: 60px;
+            height: 60px;
+            top: -25px;
+            transform: translateX(-50%);
+            left: 50%;
+        }
+    }
+
+    .header {
+        font-size: 18px;
+    }
+
+    .ticket-info {
+        font-size: 22px;
+    }
+
+    .purchase-info, .timer, .footer {
+        font-size: 14px;
+    }
+
+    .qr-code {
+        width: 230px;
+        height: 230px;
+    }
+
+    .timer-container {
+        padding: 10px 15px;
+    }
+
+    .timer {
+        font-size: 16px;
+        margin-left: 30px;
+    }
+
+    .circle {
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid green;
+        left: 10px;
+    }
+}
