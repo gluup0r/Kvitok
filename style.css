@@ -14,7 +14,7 @@ body {
     position: relative;
     background-color: white;
     border-radius: 20px;
-    padding: 30px 20px;
+    padding: 30px 20px 60px 20px; /* додано padding-bottom для хвилі */
     width: 100%;
     max-width: 400px;
     min-height: 620px;
@@ -176,19 +176,20 @@ body {
     height: 24px;
 }
 
-/* Адаптація для екранів ≤ 600px */
+/* Адаптація під смартфони */
 @media (max-width: 600px) {
     .ticket-container {
-        padding: 20px 10px;
-        max-width: 350px;
+        padding: 20px 15px 70px 15px; /* збільшено нижній padding */
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .logo {
         width: 60px;
         height: 60px;
         top: -25px;
-        left: 50%;
         transform: translateX(-50%);
+        left: 50%;
     }
 
     .header {
@@ -210,6 +211,11 @@ body {
 
     .timer-container {
         padding: 10px 15px;
+    }
+
+    .timer {
+        font-size: 16px;
+        margin-left: 30px;
     }
 
     .circle {
