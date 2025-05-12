@@ -210,7 +210,7 @@ body {
   }
 
   .footer {
-    margin-top: 20px; /* Додано для опускання футера */
+    margin-top: 30px; /* Додано для опускання футера */
   }
 
   .qr-code {
@@ -251,7 +251,7 @@ body {
 
   #waveCanvas {
     position: absolute;
-  top: 655px;
+  top: 670px;
     bottom: 0;
     left: 0;
     width: 100%;
