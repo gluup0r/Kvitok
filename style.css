@@ -175,6 +175,10 @@ body {
 
 /* 📱 Адаптація для телефонів */
 @media (max-width: 600px) {
+  .ticket-wrapper {
+    max-width: 100%;
+  }
+
   .ticket-container {
     padding: 20px 15px 60px 15px;
     max-width: 100%;
@@ -201,6 +205,7 @@ body {
   .timer,
   .footer {
     font-size: 14px;
+     margin-top: 30px;
   }
 
   .qr-code {
@@ -222,5 +227,21 @@ body {
     height: 10px;
     border: 1.5px solid green;
     left: 10px;
+  }
+
+  #waveCanvas {
+    height: 50px;
+  }
+}
+
+
+/* 📱 Адаптация для больших экранов (например, Samsung S24 Ultra) */
+@media (min-width: 1000px) {
+  .ticket-container {
+    max-width: 600px;
+  }
+
+  #waveCanvas {
+    height: 55px;
   }
 }
