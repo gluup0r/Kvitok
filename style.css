@@ -28,13 +28,13 @@ body {
 .ticket-container::after {
     content: '';
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: #f5f5f5;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
+    bottom: -1px; /* трохи нижче контейнера */
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background: radial-gradient(circle at 12.5% 0, #f5f5f5 13px, transparent 13px) repeat-x;
+    background-size: 25px 25px;
+    z-index: 3;
 }
 
 .ticket-container::before {
