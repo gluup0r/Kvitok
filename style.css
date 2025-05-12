@@ -184,7 +184,8 @@ body {
   }
 
   .thin-line {
-  margin: 60px auto 20px auto;
+  height: 1px; 
+  margin: 50px auto 20px auto;
 }
 
   .logo {
@@ -200,7 +201,7 @@ body {
   }
 
    .ticket-info {
-    font-size: 22px;
+    font-size: 40px;
   }
 
   .purchase-info,
@@ -250,7 +251,7 @@ body {
 
   #waveCanvas {
     position: absolute;
-  top: 651px;
+  top: 670px;
     bottom: 0;
     left: 0;
     width: 100%;
