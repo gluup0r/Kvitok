@@ -172,8 +172,6 @@ body {
   width: 100%; /* Сделаем ширину равной ширине контейнера */
   height: 50px;
 }
-
-/* 📱 Адаптація для телефонів */
 @media (max-width: 600px) {
   .ticket-wrapper {
     max-width: 100%;
@@ -184,6 +182,10 @@ body {
     max-width: 100%;
     box-sizing: border-box;
   }
+
+  .thin-line {
+  margin: 60px auto 20px auto;
+}
 
   .logo {
     width: 60px;
@@ -197,15 +199,17 @@ body {
     font-size: 18px;
   }
 
-  .ticket-info {
+   .ticket-info {
     font-size: 22px;
   }
 
   .purchase-info,
-  .timer,
   .footer {
     font-size: 14px;
-     margin-top: 30px;
+  }
+
+  .footer {
+    margin-top: 30px; /* Додано для опускання футера */
   }
 
   .qr-code {
@@ -214,34 +218,44 @@ body {
   }
 
   .timer-container {
-    padding: 10px 15px;
-  }
-
-  .timer {
-    font-size: 16px;
-    margin-left: 30px;
-  }
+  margin: 20px auto;
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 260px;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #e1f2e7, #e0f0fc);
+  border-radius: 15px;
+}
 
   .circle {
     width: 10px;
     height: 10px;
     border: 1.5px solid green;
-    left: 10px;
+    background-color: transparent;
+    margin-right: 10px;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .timer {
+    font-size: 16px;
+    margin-left: 0;
   }
 
   #waveCanvas {
-    height: 50px;
-  }
-}
-
-
-/* 📱 Адаптация для больших экранов (например, Samsung S24 Ultra) */
-@media (min-width: 1000px) {
-  .ticket-container {
-    max-width: 600px;
-  }
-
-  #waveCanvas {
+    position: absolute;
+  top: 651px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 55px;
+    z-index: 3;
+    pointer-events: none;
   }
 }
