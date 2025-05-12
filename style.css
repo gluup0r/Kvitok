@@ -161,12 +161,13 @@ body {
 
 .wave-bottom {
     position: absolute;
-    bottom: -10px;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 24px;
+    height: 25px; /* або 30px, як у тебе на фото */
     line-height: 0;
-    z-index: 1;
+    overflow: hidden;
+    z-index: 2;
 }
 
 .wave-bottom svg {
@@ -178,7 +179,8 @@ body {
 /* Адаптація під смартфони */
 @media (max-width: 600px) {
     .ticket-container {
-        padding: 20px 15px 70px 15px; /* збільшено нижній padding */
+        padding: 20px 15px 70px 15px;
+        padding-bottom: 30px;
         max-width: 100%;
         box-sizing: border-box;
     }
@@ -224,8 +226,7 @@ body {
         left: 10px;
     }
  .wave-bottom {
-        bottom: -10px; /* зсуває хвилю вниз */
-        height: 40px;   /* робить хвилю вищою */
+ height: 35px;   /* робить хвилю вищою */
     }
 
     .wave-bottom svg {
