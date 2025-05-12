@@ -223,9 +223,9 @@ body {
         border: 1.5px solid green;
         left: 10px;
     }
-       .wave-bottom {
-        height: 10px;
-        bottom: -10px;
+ .wave-bottom {
+        bottom: -10px; /* зсуває хвилю вниз */
+        height: 40px;   /* робить хвилю вищою */
     }
 
     .wave-bottom svg {
