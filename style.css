@@ -225,6 +225,7 @@ body {
     }
        .wave-bottom {
         height: 10px;
+        bottom: -10px;
     }
 
     .wave-bottom svg {
