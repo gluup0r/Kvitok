@@ -1,40 +1,64 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Квиток</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Квиток</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="ticket-wrapper">
     <div class="ticket-container">
-        <div class="top-cutout"></div>
-        <img src="images/logo.png" alt="Logo" class="logo">
-        <div class="header">Миколаївелектротранс Тролейбус</div>
-        <div class="thin-line"></div>
-        <div class="purchase-info" id="purchase-info"></div>
-        <div class="ticket-info">
-            <span id="ticket-count">1</span> квиток
-        </div>
-        <div class="timer-container">
-            <div class="circle"></div>
-            <div class="timer">Квиток дійсний — <span id="timer">1:30:00</span></div>
-        </div>
-        <div class="dotted-line">
-            <svg width="100%" height="4" viewBox="0 0 100 1">
-                <line x1="0" y1="0" x2="100" y2="0" stroke="#ccc" stroke-width="1" stroke-dasharray="3, 6"/>
-            </svg>
-        </div>
-        <img src="images/qr-code.jpg" alt="QR Code" class="qr-code">
-        <div class="footer">Номер: <span id="ticket-number">174&nbsp;525</span></div>
-    </div>
-    <div class="wave-bottom">
-        <svg viewBox="0 0 120 10" preserveAspectRatio="none">
-            <path d="M0,10 Q3,0 6,10 T12,10 T18,10 T24,10 T30,10 T36,10 T42,10 T48,10 T54,10 T60,10 T66,10 T72,10 T78,10 T84,10 T90,10 T96,10 T102,10 T108,10 T114,10 T120,10" fill="#f5f5f5"/>
+      <div class="top-cutout"></div>
+      <img src="images/logo.png" alt="Logo" class="logo" />
+      <div class="header">Миколаївелектротранс Тролейбус</div>
+      <div class="thin-line"></div>
+      <div class="purchase-info" id="purchase-info"></div>
+      <div class="ticket-info">
+        <span id="ticket-count">1</span> квиток
+      </div>
+      <div class="timer-container">
+        <div class="circle"></div>
+        <div class="timer">Квиток дійсний — <span id="timer">1:30:00</span></div>
+      </div>
+      <div class="dotted-line">
+        <svg width="100%" height="4" viewBox="0 0 100 1">
+          <line x1="0" y1="0" x2="100" y2="0" stroke="#ccc" stroke-width="1" stroke-dasharray="3, 6" />
         </svg>
+      </div>
+      <img src="images/qr-code.jpg" alt="QR Code" class="qr-code" />
+      <div class="footer">Номер: <span id="ticket-number">174&nbsp;525</span></div>
     </div>
-        
-    <script src="script.js"></script>
+
+    <!-- Хвиля -->
+    <canvas id="waveCanvas" width="1200" height="80"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+<script>
+  const canvas = document.getElementById('waveCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Налаштування хвилі
+  const amplitude = 10;   // Висота хвилі
+  const frequency = 0.04; // Частота хвилі
+  const baseline = 60;    // Початок по Y (подняли выше)
+
+  ctx.beginPath();
+  ctx.moveTo(0, baseline);
+
+  for (let x = 0; x <= canvas.width; x += 5) {
+    const y = baseline + Math.sin(x * frequency) * amplitude;
+    ctx.lineTo(x, y);
+  }
+
+  ctx.lineTo(canvas.width, canvas.height);
+  ctx.lineTo(0, canvas.height);
+  ctx.closePath();
+
+  ctx.fillStyle = '#f5f5f5';  // Новый цвет волны (синий)
+  ctx.fill();
+</script>
 </body>
 </html>
