@@ -201,7 +201,7 @@ body {
   }
 
    .ticket-info {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   .purchase-info,
@@ -251,7 +251,7 @@ body {
 
   #waveCanvas {
     position: absolute;
-  top: 651px;
+  top: 670px;
     bottom: 0;
     left: 0;
     width: 100%;
