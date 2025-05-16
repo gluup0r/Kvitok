@@ -31,19 +31,19 @@
       <div class="footer">Номер: <span id="ticket-number">174&nbsp;525</span></div>
     </div>
 
-    <!-- Хвиля -->
     <canvas id="waveCanvas" width="1200" height="80"></canvas>
   </div>
+
+  <div class="reopen-message">Ви зможете повторно відкрити цю<br>сторінку через історію браузера</div>
 
   <script src="script.js"></script>
 <script>
   const canvas = document.getElementById('waveCanvas');
   const ctx = canvas.getContext('2d');
 
-  // Налаштування хвилі
-  const amplitude = 10;   // Висота хвилі
-  const frequency = 0.04; // Частота хвилі
-  const baseline = 60;    // Початок по Y (подняли выше)
+  const amplitude = 10;
+  const frequency = 0.04;
+  const baseline = 60;
 
   ctx.beginPath();
   ctx.moveTo(0, baseline);
