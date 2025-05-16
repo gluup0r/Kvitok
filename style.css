@@ -174,17 +174,16 @@ body {
 }
 
 .reopen-message {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
+  position: fixed;
   font-size: 14px;
   color: #999;
-  padding: 0 20px;
-  z-index: 4;
+  padding: 20px 20px;
+  text-align: center;
   margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 
 @media (max-width: 600px) {
   .ticket-wrapper {
@@ -274,7 +273,7 @@ body {
     pointer-events: none;
   }
   .reopen-message {
-    bottom: -50px;
+    bottom: 10px;
     font-size: 13px;
   }
 }
