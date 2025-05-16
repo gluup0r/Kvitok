@@ -273,7 +273,7 @@ body {
     pointer-events: none;
   }
   .reopen-message {
-    bottom: 10px;
+    bottom: -10px;
     font-size: 13px;
   }
 }
